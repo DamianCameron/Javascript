@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MonkeyShuffle</title>
+    <link href="https://fonts.googleapis.com/css?family=Copse" rel="stylesheet">
+    <style>
+        html {
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+        }
+        body {
+            font-family: 'Copse', serif;
+            text-align: center;
+        }
+        img {
+            height: 300px;
+            width: 300px;
+            border: 0px;
+        }
+        #pics {
+            width: 900px;
+            height: 900px;
+            border: solid 1px black;
+            font-size: 0px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<h1>Rick And Morty Shuffle</h1>
+<div id="pics">
+    <img src="../img/R1.png">
+    <img src="../img/R2.jpg">
+    <img src="../img/R3.png">
+    <img src="../img/R4.jpg">
+    <img src="../img/R5.png">
+    <img src="../img/R6.jpg">
+    <img src="../img/R7.jpg">
+    <img src="../img/R8.jpeg">
+    <img src="../img/R9.jpg">
+</div>
+
+<script>
+    var plaatjes = document.getElementsByTagName("img");
+    var random = 0;
+
+    var randomNumbers = [];
+
+    while(randomNumbers.length < 9) {
+        random = Math.floor(Math.random() * 9) + 1;
+        if(randomNumbers.lastIndexOf(random) == -1) {
+            randomNumbers.push(random);
+        }
+    }
+
+    random = 0;
+    for (var plaatje in plaatjes) {
+        plaatjes[plaatje].src = "../img/R" + randomNumbers[random] + ".jpg";
+        random++;
+    }
+</script>
+</body>
+</html>
