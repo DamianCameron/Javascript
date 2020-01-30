@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rick And Morty Chooser</title>
+    <link href="https://fonts.googleapis.com/css?family=Copse" rel="stylesheet">
+    <style>
+
+        body {
+            font-family: 'Copse', serif;
+            text-align: center;
+        }
+        div.picture-holder {
+            box-sizing: border-box;
+            height: 450px;
+            width: 300px;
+            float: left;
+            border:solid 1px black;
+        }
+
+        div.favoriet {
+            width:300px;
+            height: 150px;
+            background-image: none;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+
+        #pics {
+            width: 900px;
+            height: 1350px;
+            border: solid 1px black;
+            font-size: 0px;
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Rick And Morty Chooser</h1>
+<h3>Choose Your Favorite Picture!</h3>
+<div id="pics">
+
+</div>
+<script>
+    pics = document.getElementById("pics");
+    createPicsHolders();
+    createrpicture();
+
+    function createPicsHolders() {
+        for (var i = 0; i < 9; i++) {
+            pictureHolder = document.createElement("div");
+            pictureHolder.className = "picture-holder";
+            pictureHolder.id = "picture-holder-" + i;
+            pics.appendChild(pictureHolder);
+        }
+    }
+
+    function createrpicture() {
+        pictureholders = document.getElementsByClassName("picture-holder");
+        for (var i = 0; i < pictureholders.length; i++) {
+            favoriet = document.createElement("div");
+            favoriet.className = "favoriet";
+            favoriet.id = "favoriet_" + (i+1);
+            afbeelding = document.createElement("img");
+            afbeelding.src = "../img/R" + (i+1) + ".jpg";
+            afbeelding.id = (i+1);
+            afbeelding.addEventListener("click", function () {
+                maakFavoriet(this.id);
+            });
+            pictureholders[i].appendChild(favoriet);
+            pictureholders[i].appendChild(afbeelding);
+        }
+        console.log(pictureholders);
+    }
+
+    function maakFavoriet(id) {
+        console.log("maak mij Favoriet! Het gaat om plaatje..." + id);
+        notsofavoriet = document.getElementsByClassName("favoriet");
+
+        for (var i =0; i < notsofavoriet.length; i++) {
+            notsofavoriet[i].style.backgroundImage ="none";
+        }
+
+        favoriet = document.getElementById("favoriet_" + id);
+        favoriet.style.backgroundImage = "url('../img/heart2.png')";
+
+    }
+
+    //picsholder maken
+    //picsholder bevat een plaatje en een hartje.
+
+    //plaatjes toevoegen aan picsholder
+    //favoriteSymbols toevoegen aan picsholders
+</script>
+</body>
+</html>
